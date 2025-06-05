@@ -6,7 +6,7 @@
 // (Adapted from ChatGPT ; firebase, 2024) modified to include custom gamification logic
 // (source: https://firebase.google.com/docs/database/android/read-and-write)
 
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

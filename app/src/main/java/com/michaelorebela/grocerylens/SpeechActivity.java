@@ -1,6 +1,6 @@
 
 
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import android.Manifest;
 import android.content.Intent;

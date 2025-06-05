@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.grocerylens"
+    namespace = "com.michaelorebela.grocerylens"
     compileSdk = 35
 
 
     defaultConfig {
-        applicationId = "com.example.grocerylens"
+        applicationId = "com.michaelorebela.grocerylens"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

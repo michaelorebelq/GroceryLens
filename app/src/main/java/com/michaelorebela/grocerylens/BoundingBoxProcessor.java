@@ -1,4 +1,4 @@
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import java.util.ArrayList;
 import java.util.List;

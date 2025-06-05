@@ -1,4 +1,4 @@
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import android.os.Bundle;
 import android.widget.Button;

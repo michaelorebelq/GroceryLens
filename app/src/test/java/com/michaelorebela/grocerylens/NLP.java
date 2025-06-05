@@ -1,4 +1,4 @@
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 import org.json.JSONArray;
 import java.util.ArrayList;

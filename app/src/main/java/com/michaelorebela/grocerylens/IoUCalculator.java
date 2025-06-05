@@ -1,4 +1,4 @@
-package com.example.grocerylens;
+package com.michaelorebela.grocerylens;
 
 /**
  * the IoUCalculator class for calculating the Intersection over Union (IoU)
