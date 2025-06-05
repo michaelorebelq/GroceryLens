@@ -1,0 +1,4 @@
+/Users/michaelorebela/Library/Android/sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /Users/michaelorebela/AndroidStudioProjects/grocerylens6/openCV/.cxx/Debug/bx10r5w6/armeabi-v7a \
+  opencv_jni_shared

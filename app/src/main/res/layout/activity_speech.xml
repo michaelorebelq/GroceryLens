@@ -1,0 +1,59 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gl_bg"
+    android:padding="16dp"
+    tools:context=".SpeechActivity">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_animation"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        android:visibility="gone" />
+
+
+    <View
+        android:id="@+id/loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gl_bg"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/mic_animation"
+        android:layout_width="314dp"
+        android:layout_height="512dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="35dp"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mic_animated" />
+
+    <TextView
+        android:id="@+id/record_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mic_animation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:text="Press and hold the circle to record your voice"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="italic" />
+
+
+</RelativeLayout>

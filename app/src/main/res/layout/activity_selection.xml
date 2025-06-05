@@ -1,0 +1,204 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/gl_bg"
+    tools:context=".SelectionActivity">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="@string/customise_detection"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/detected_ingredients_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_text"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card_view"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detected_ingredients"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <ListView
+                android:id="@+id/detectedIngredientsListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_view"
+                android:choiceMode="multipleChoice"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/add_ingredients_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detected_ingredients_section"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/card_view"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_add_ingredients"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/searchAddIngredientsButton"
+                android:layout_width="333dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/button_ui"
+                android:padding="8dp"
+                android:text="@string/add_ingredients"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dietary_preferences_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_ingredients_section"
+            android:layout_marginTop="25dp"
+            android:text="@string/dietary_preferences"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/dietary_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dietary_preferences_label"
+            android:background="@drawable/card_view"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/veganRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vegan"
+                android:textColor="@color/black"/>
+
+            <RadioButton
+                android:id="@+id/glutenFreeRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gluten_free"
+                android:textColor="@color/black"/>
+
+            <RadioButton
+                android:id="@+id/ketoRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keto"
+                android:textColor="@color/black"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/cuisine_preferences_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dietary_group"
+            android:layout_marginTop="20dp"
+            android:text="@string/preferred_cuisines"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <GridLayout
+            android:id="@+id/cuisine_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cuisine_preferences_label"
+            android:layout_marginTop="5dp"
+            android:columnCount="2"
+            android:background="@drawable/card_view"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <CheckBox
+                android:id="@+id/italianCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/italian"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/asianCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asian"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/mexicanCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mexican"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/indianCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/indian"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/mediterraneanCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mediterranean"
+                android:textColor="@color/black" />
+        </GridLayout>
+
+        <Button
+            android:id="@+id/generateRecipesButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cuisine_group"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="90dp"
+            android:background="@drawable/button_ui"
+            android:maxWidth="250dp"
+            android:padding="8dp"
+            android:text="@string/generate_recipes"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</ScrollView>

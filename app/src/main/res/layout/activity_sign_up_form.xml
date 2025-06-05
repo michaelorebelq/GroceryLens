@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gl_bg"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/accountLogo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/gllogo"
+        android:contentDescription="@string/grocerylens_logo1" />
+
+
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountLogo"
+        android:layout_marginTop="72dp"
+        android:autofillHints=""
+        android:background="@drawable/card_view"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#616161"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_input"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/card_view"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#616161"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_input"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/card_view"
+        android:hint="@string/passwordsignup"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#616161"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+
+    <EditText
+        android:id="@+id/confirm_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_input"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/card_view"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#616161"
+        android:textSize="18sp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/goal_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_password_input"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/card_view"
+        android:hint="Recipe Goal"
+        android:inputType="number"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="#616161"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goal_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/roundedcorner"
+        android:text="@string/sign_up_page"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="10dp" />
+
+</RelativeLayout>

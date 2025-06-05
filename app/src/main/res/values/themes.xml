@@ -1,0 +1,6 @@
+<resources>
+    <style name="Base.Theme.GroceryLens" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+
+    <style name="Theme.GroceryLens" parent="Base.Theme.GroceryLens" />
+</resources>

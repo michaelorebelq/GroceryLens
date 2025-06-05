@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/michaelorebela/AndroidStudioProjects/grocerylens6/openCV"
+    name=":openCV"
+    type="LIBRARY"
+    maven="GroceryLens:openCV:unspecified"
+    agpVersion="8.7.1"
+    buildFolder="build"
+    bootClassPath="/Users/michaelorebela/Library/Android/sdk/platforms/android-34/android.jar:/Users/michaelorebela/Library/Android/sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>
