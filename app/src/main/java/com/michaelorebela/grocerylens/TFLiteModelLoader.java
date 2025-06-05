@@ -2,7 +2,6 @@ package com.example.grocerylens;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.util.Log;
 
 import org.tensorflow.lite.Interpreter;
 
