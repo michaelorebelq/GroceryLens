@@ -33,7 +33,7 @@ consisting of:
 'mushroom', 'onion', 'orange', 'potato', 'tomato'].
 
 Ingredients are detected and then sent to customisation screen for recipe generation.
-The model runs fully on-device for fast inference
+The model runs fully on-device for fast inference, and has successfully detected up to four ingredients simultaneously in a single image.
 
 <p float="left">
   <img src="images/camera.png" width="150" />
