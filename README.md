@@ -8,12 +8,25 @@ food waste by turning ingredients they have into recipe ideas.
 the application combines Machine learning components (Computer Vision and Natural Language Processing)
 to achieve this goal.
 
+## Tech Stack
+GroceryLens was built using:
+- **Java & XML**
+- **Python**
+- **OpenCV**
+- **YOLOv8**
+- **Android Studio**
+- **TensorFlow Lite**
+- **Firebase Authentication** 
+- **Firebase Realtime Database** 
+- **Google Cloud Run** 
+- **Spoonacular API**
+
 ---
 ## Features
 
-### 1) Food Image Detection
+### Food Image Detection
 
-A YOLOv8 model was trained on a custom dataset of 17 food classes [Common Food Items Dataset (Kaggle)](https://www.kaggle.com/datasets/michaelorebela/common-food-items-dataset)
+A YOLOv8 model was trained on a curated dataset of 17 food classes [Common Food Items Dataset (Kaggle)](https://www.kaggle.com/datasets/michaelorebela/common-food-items-dataset)
 consisting of:
 
 ['banana', 'beef', 'bread', 'broccoli', 'cheese', 'chicken', 'cucumber', 'egg', 'fish', 'lemon', 'lettuce', 'milk', 
@@ -27,7 +40,7 @@ The model runs fully on-device for fast inference
   <img src="images/selection.png" width="150" />
 </p>
 
-### 2) NLP Voice Detection
+### NLP Voice Detection
 
 GroceryLens allows users to input ingredients through **voice commands**.
 To process the input, a **FoodBERT NER API** was built using:
@@ -45,7 +58,7 @@ Note on the first use, the API may experience a **cold start delay**.
 
 <img src="images/voiceinput.png" width="150" />
 
-### 3) Recipe Generation
+### Recipe Generation
 
 **Spoonacular API** is used to generate recipe ideas based on the selected ingredients.
 
@@ -60,7 +73,7 @@ Detailed recipe information is returned and recipes can be saved to favourites f
 
 </p>
 
-### 3) Gamification 
+### Gamification 
 
 GroceryLens also includes a gamified experience to encourage continued application usage.
 Users progress through levels based on the number of recipes viewed.
@@ -68,12 +81,27 @@ Users progress through levels based on the number of recipes viewed.
 A Circular progress indicator and badge system can be seen on the landing page,
 and user progress is stored in Firebase Realtime Database and synced across devices.
 
-<img src="images/landingpage.png" width="150" />
+<p float="left">
+    <img src="images/landingpage.png" width="150" />
+    <img src="images/about.png" width="150" />
+</p>
 
+---
 
+## Computer Vision Training 
 
+YOLOv8s was used as the model of choice.
+- 300 training epochs
+- Optimizer: AdamW
+- Learning rate: 0.0005
+- Batch size: 128
+- Dataset included both **manually labeled data** and **pseudo-labelled images** from semi-supervised learning
+- Trained using Google Colab **A100 GPU**
 
+### Results
+- mAP@0.5:0.95 **85.43%**
+- Precision: **93.25%**
+- Recall: **86.01%**
+- Average inference time on device: **438 ms**
 
-
-
-
+<img src="images/results.png" width="200" />
