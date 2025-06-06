@@ -43,7 +43,7 @@ The model runs fully on-device for fast inference
 ### NLP Voice Detection
 
 GroceryLens allows users to input ingredients through **voice commands**.
-To process the input, a **FoodBERT NER API** was developed using:
+To process the input, a **DistillBERT FoodBERT NER API** was developed using:
 
 [chambliss/distilbert-for-food-extraction](https://huggingface.co/chambliss/distilbert-for-food-extraction)
 and then Hosted as a REST API on **Google Cloud Run**.
