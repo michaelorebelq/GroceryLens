@@ -9,7 +9,7 @@ the application combines Machine learning components (Computer Vision and Natura
 to achieve this goal.
 
 ## Tech Stack
-GroceryLens was built using:
+GroceryLens was built using the following:
 - **Java & XML**
 - **Python**
 - **OpenCV**
@@ -43,7 +43,7 @@ The model runs fully on-device for fast inference
 ### NLP Voice Detection
 
 GroceryLens allows users to input ingredients through **voice commands**.
-To process the input, a **FoodBERT NER API** was built using:
+To process the input, a **FoodBERT NER API** was developed using:
 
 [chambliss/distilbert-for-food-extraction](https://huggingface.co/chambliss/distilbert-for-food-extraction)
 and then Hosted as a REST API on **Google Cloud Run**.
@@ -98,10 +98,10 @@ YOLOv8s was used as the model of choice.
 - Dataset included both **manually labeled data** and **pseudo-labelled images** from semi-supervised learning
 - Trained using Google Colab **A100 GPU**
 
-### Results
+### Final Results
 - mAP@0.5:0.95 **85.43%**
 - Precision: **93.25%**
 - Recall: **86.01%**
 - Average inference time on device: **438 ms**
 
-<img src="images/results.png" width="200" />
+<img src="images/results.png" width="400" />
