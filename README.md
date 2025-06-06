@@ -107,6 +107,8 @@ YOLOv8s was used as the model of choice.
 <img src="images/results.png" width="400" />
 
 ---
+### Download
+ [Download Here](https://github.com/michaelorebelq/GroceryLens/releases/tag/release)
 # Acknowledgements:
 
 This project was completed as part of my Final Year Project for the BEng Software Engineering degree at the University of Westminster.
