@@ -93,7 +93,7 @@ and user progress is stored in Firebase Realtime Database and synced across devi
 YOLOv8s was used as the model of choice.
 - 300 training epochs
 - Optimizer: AdamW
-- Learning rate: 0.0005
+- Learning rate: 0.001
 - Batch size: 128
 - Dataset included both **manually labeled data** and **pseudo-labelled images** from semi-supervised learning
 - Trained using Google Colab **A100 GPU**
@@ -105,3 +105,14 @@ YOLOv8s was used as the model of choice.
 - Average inference time on device: **438 ms**
 
 <img src="images/results.png" width="400" />
+
+---
+# Acknowledgements:
+
+This project was completed as part of my Final Year Project for the BEng Software Engineering degree at the University of Westminster.
+I would like to thank my supervisor, Dr Alexandra Psarrou, for her invaluable guidance throughout the development of this project.
+
+# Contact Details
+LinkedIn: https://www.linkedin.com/in/michael-o-a6b096272/
+
+
