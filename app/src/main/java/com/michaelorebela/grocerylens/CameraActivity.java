@@ -1,7 +1,9 @@
 package com.michaelorebela.grocerylens;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -11,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -20,17 +25,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CameraActivity handles capturing an image from the camera
- * then running the YOLOv8 model, and sending the detected ingredients to the next
- * activity.
+ * CameraActivity handles capturing an image from the camera,
+ * running the YOLOv8 model, and sending the detected ingredients to the next activity.
  */
-
 public class CameraActivity extends AppCompatActivity {
     private static final String TAG = "CameraView";
+
     private ImageView capturedImageView;
     private TextView detectingText;
     private Interpreter tflite;
     private List<String> labels;
+
+    // Launchers
+    private ActivityResultLauncher<String> requestCameraPermissionLauncher;
+    private ActivityResultLauncher<Intent> takePictureLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +49,11 @@ public class CameraActivity extends AppCompatActivity {
         detectingText = findViewById(R.id.detectingText);
         Button captureButton = findViewById(R.id.captureButton);
 
-        // Uses LabelLoader class to load class labels
+        // Load class labels
         labels = LabelLoader.loadLabels(this, "labels.txt");
 
-        //loads .tflite file into memory using TFLiteModelLoader
+        // Load the YOLOv8 model
         try {
-
             tflite = TFLiteModelLoader.loadModelFile(this, "best_float32.tflite");
             Log.d(TAG, "TFLite model loaded");
         } catch (IOException e) {
@@ -55,8 +62,49 @@ public class CameraActivity extends AppCompatActivity {
             finish();
         }
 
-        // Opens device camera on button click
-        captureButton.setOnClickListener(v -> openCamera());
+        // Register permission request launcher
+        requestCameraPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        openCamera();
+                    } else {
+                        Toast.makeText(this, "Camera permission required to use this feature", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Register camera intent launcher
+        takePictureLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                        capturedImageView.setImageBitmap(bitmap);
+
+                        float[][][][] inputData = ImageProcessorUtil.preprocessImage(bitmap);
+
+                        float[][][] outputData = new float[1][21][3549];
+
+                        long startTime = SystemClock.elapsedRealtime();
+                        tflite.run(inputData, outputData);
+                        long endTime = SystemClock.elapsedRealtime();
+                        long inferenceTime = endTime - startTime;
+                        Log.d("InferenceTimeTest", "Inference time is " + inferenceTime + " ms");
+
+                        List<String> detectedLabels = processTFLiteOutput(outputData, bitmap.getWidth(), bitmap.getHeight());
+                        sendResults(detectedLabels);
+                    }
+                });
+
+        // When capture button is clicked, check permission first
+        captureButton.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+            }
+        });
     }
 
     /**
@@ -64,55 +112,21 @@ public class CameraActivity extends AppCompatActivity {
      */
     private void openCamera() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 1);
-    }
-    /**
-     * Results from the camera intent is handled here.
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            capturedImageView.setImageBitmap(bitmap);
-
-            //preprocess the image and convert into a 4d tensor
-            float[][][][] inputData = ImageProcessorUtil.preprocessImage(bitmap);
-
-            // output 3d tensor format
-            float[][][] outputData = new float[1][21][3549];
-            //  time the inference for performance tests
-            long startTime = SystemClock.elapsedRealtime();
-            //Run inference
-            tflite.run(inputData, outputData);
-
-            long endTime = SystemClock.elapsedRealtime();
-            long inferenceTime = endTime - startTime;
-            Log.d("InferenceTimeTest", "Inference time is " + inferenceTime + " ms");
-
-            // Extracting the detected labels
-            List<String> detectedLabels = processTFLiteOutput(outputData, bitmap.getWidth(), bitmap.getHeight());
-
-            sendResults(detectedLabels);
-        }
+        takePictureLauncher.launch(intent);
     }
 
     /**
-     * logic for post processing using the BoundingBoxProcessor
-     *
+     * Processes model output using the BoundingBoxProcessor.
      */
     private List<String> processTFLiteOutput(float[][][] outputData,
                                              int imageWidth, int imageHeight) {
-        //create empty list to store labels
         List<String> detectedLabels = new ArrayList<>();
 
         List<BoundingBox> boxes = BoundingBoxProcessor.extractBoxes(
-                // confidence threshold set at 0.15
                 outputData, labels, 0.15F, imageWidth, imageHeight);
+
         for (BoundingBox box : boxes) {
             for (String label : box.classLabels) {
-                //add the label only if its not already in the list
-
                 if (!detectedLabels.contains(label)) {
                     detectedLabels.add(label);
                 }
@@ -121,9 +135,8 @@ public class CameraActivity extends AppCompatActivity {
         return detectedLabels;
     }
 
-
     /**
-     * passes the detected ingredients to selection activity
+     * Sends the detected ingredients to SelectionActivity.
      */
     @SuppressLint("SetTextI18n")
     public void sendResults(List<String> detectedLabels) {
