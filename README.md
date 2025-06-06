@@ -45,6 +45,21 @@ Note on the first use, the API may experience a **cold start delay**.
 
 <img src="images/voiceinput.png" width="150" />
 
+### 3) Recipe Generation
+
+**Spoonacular API** is used to generate recipe ideas based on the selected ingredients.
+
+Users are able to customise recipe search with **Dietary preferences** and **Cuisines**.
+Detailed recipe information is returned and recipes can be saved to favourites for future reference.
+
+<p float="left">
+  <img src="images/selectionactivity.png" width="150" />
+  <img src="images/generated.png" width="150" />
+  <img src="images/recipes.png" width="150" />
+  <img src="images/favourites.png" width="150" />
+
+</p>
+
 ### 3) Gamification 
 
 GroceryLens also includes a gamified experience to encourage continued application usage.
