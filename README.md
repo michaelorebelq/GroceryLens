@@ -5,7 +5,7 @@
 
 GroceryLens is an AI powered mobile application that aims to help users reduce 
 food waste by turning ingredients they have into recipe ideas.
-the application combines Machine learning components (Computer Vision and Natural Language Processing)
+The application combines Machine learning components (Computer Vision and Natural Language Processing)
 to achieve this goal.
 
 ## Tech Stack
