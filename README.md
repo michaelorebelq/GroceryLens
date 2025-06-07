@@ -115,6 +115,6 @@ This project was completed as part of my Final Year Project for the BEng Softwar
 I would like to thank my supervisor Dr Alexandra Psarrou, for her invaluable guidance throughout the development of this project.
 
 # Contact Details
-LinkedIn: https://www.linkedin.com/in/michael-o-a6b096272/
+LinkedIn: https://www.linkedin.com/in/michaelorebela/
 
 
